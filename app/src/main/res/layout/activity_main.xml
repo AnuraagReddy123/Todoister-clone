@@ -35,7 +35,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/dimen_60"
-        android:padding="@dimen/recycler_padding"
+        android:layout_marginBottom="30dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
         android:visibility="visible">
 
     </androidx.recyclerview.widget.RecyclerView>
