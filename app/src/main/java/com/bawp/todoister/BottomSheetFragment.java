@@ -32,7 +32,7 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
     private ImageButton saveButton;
     private CalendarView calendarView;
     private Group calendarGroup;
-    private Date dueDate;
+    private Date dueDate = Calendar.getInstance().getTime();
     Calendar calendar = Calendar.getInstance();
 
     public BottomSheetFragment() {
@@ -83,7 +83,7 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
                         Calendar.getInstance().getTime(), false);
 
                 TaskViewModel.insert(myTask);
-                dueDate = null;
+                dueDate = Calendar.getInstance().getTime();
                 enterTodo.setText("");
                 dismiss();
             }
