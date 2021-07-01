@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bawp.todoister.R;
 import com.bawp.todoister.model.Task;
+import com.bawp.todoister.model.TaskViewModel;
 import com.bawp.todoister.util.Utils;
 import com.google.android.material.chip.Chip;
 
@@ -72,6 +73,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 //                }
 //            });
             radioButton.setOnClickListener(this);
+//            radioButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Task currTask = taskList.get(getAdapterPosition());
+//                    TaskViewModel.delete(currTask);
+//                    notifyDataSetChanged();
+//                }
+//            });
         }
 
         @Override
