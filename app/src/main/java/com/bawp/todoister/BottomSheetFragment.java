@@ -19,8 +19,10 @@ import com.bawp.todoister.model.Priority;
 import com.bawp.todoister.model.SharedViewModel;
 import com.bawp.todoister.model.Task;
 import com.bawp.todoister.model.TaskViewModel;
+import com.bawp.todoister.util.Utils;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.chip.Chip;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -86,6 +88,7 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
 
         calendarButton.setOnClickListener(v -> {
             calendarGroup.setVisibility(calendarGroup.getVisibility() == View.GONE ? View.VISIBLE : View.GONE);
+            Utils.hideSoftKeyboard(view);
         });
 
         calendarView.setOnDateChangeListener((view1, year, month, dayOfMonth) -> {
@@ -102,6 +105,7 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
 
                 if (isEdit) {
                     Task updateTask = sharedViewModel.getSelectedItem().getValue();
+                    assert updateTask != null;
                     updateTask.setTask(task);
                     updateTask.setDateCreated(Calendar.getInstance().getTime());
                     updateTask.setPriority(Priority.HIGH);
@@ -114,6 +118,8 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
                 dueDate = Calendar.getInstance().getTime();
                 enterTodo.setText("");
                 dismiss();
+            } else {
+                Snackbar.make(saveButton, R.string.empty_field, Snackbar.LENGTH_SHORT).show();
             }
         });
     }
